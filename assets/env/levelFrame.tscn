@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://crugh57dbdpui"]
+
+[node name="levelFrame" type="Node2D"]
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+z_index = -1
+custom_minimum_size = Vector2(906, 906)
+offset_left = -3.0
+offset_top = -3.0
+offset_right = 803.0
+offset_bottom = 803.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -1
+custom_minimum_size = Vector2(900, 900)
+offset_right = 800.0
+offset_bottom = 800.0
+color = Color(0.608618, 0.574748, 0.55247, 1)
+
+[node name="border" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="border"]
+position = Vector2(-3, 100)
+polygon = PackedVector2Array(3, -200, 3, 800, 903, 800, 903, -200, 1703, -900, 1003, 900, -97, 900, -800, -900)

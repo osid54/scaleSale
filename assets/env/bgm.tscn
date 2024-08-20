@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5b1psa04sbpe"]
+
+[ext_resource type="AudioStream" uid="uid://2q1bhafgcrf2" path="res://src/audio/Stream Loops 2024-05-08.ogg" id="1_xfesw"]
+[ext_resource type="Script" path="res://scripts/autoload/bgm.gd" id="2_esmuj"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer"]
+stream = ExtResource("1_xfesw")
+autoplay = true
+script = ExtResource("2_esmuj")

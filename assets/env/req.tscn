@@ -1,0 +1,98 @@
+[gd_scene load_steps=8 format=3 uid="uid://dsy6kh782a65s"]
+
+[ext_resource type="Texture2D" uid="uid://xusvp7anc55j" path="res://src/sprites/progress.png" id="1_elecl"]
+[ext_resource type="Script" path="res://scripts/req.gd" id="1_n2u4w"]
+[ext_resource type="Texture2D" uid="uid://bdedcdfutpin8" path="res://src/sprites/circle.png" id="1_w3tv0"]
+[ext_resource type="Texture2D" uid="uid://cfrexvcrwn7sr" path="res://src/sprites/spritesheet_48x48.png" id="3_bgd5l"]
+[ext_resource type="Texture2D" uid="uid://0f8pqh34ldfh" path="res://src/sprites/redo.png" id="5_urcft"]
+[ext_resource type="AudioStream" uid="uid://dgj7qs442stjx" path="res://src/audio/MI_SFX 43.mp3" id="6_lofc1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_63jx2"]
+radius = 60.0
+
+[node name="req" type="StaticBody2D"]
+position = Vector2(-1, 0)
+script = ExtResource("1_n2u4w")
+
+[node name="bg" type="Sprite2D" parent="."]
+modulate = Color(0.439396, 0.499648, 0.547521, 1)
+scale = Vector2(3, 3)
+texture = ExtResource("1_w3tv0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_63jx2")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+pivot_offset = Vector2(16, 16)
+value = 100.0
+fill_mode = 4
+texture_under = ExtResource("1_elecl")
+texture_progress = ExtResource("1_elecl")
+tint_under = Color(0.234811, 0.309813, 0.364227, 1)
+tint_progress = Color(0.38512, 0.666843, 0.900531, 1)
+
+[node name="item" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("3_bgd5l")
+hframes = 16
+vframes = 22
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+
+[node name="Button" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(80, 80)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="reset" type="Button" parent="."]
+visible = false
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(100, 100)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="reset"]
+position = Vector2(51, 50)
+scale = Vector2(3, 3)
+texture = ExtResource("5_urcft")
+
+[node name="audio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_lofc1")
+max_polyphony = 2
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
+[connection signal="button_down" from="reset" to="." method="_on_reset_button_down"]
